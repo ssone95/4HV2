@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_4H_Application.Views.Pages.Records.ServiceRecordPage">
+  <ContentPage.Title>
+    <x:String>Service Record</x:String>
+  </ContentPage.Title>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="AddServiceButton"
+                 AutomationId="AddServiceButton"
+                 Clicked="AddServiceButton_Clicked">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource">
+          <On Platform="Android" Value="ic_add_white" />
+          <On Platform="iOS" Value="ic_add_black" />
+        </OnPlatform>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical"
+                 Spacing="0">
+      <ScrollView VerticalOptions="FillAndExpand"
+                  BackgroundColor="LightGray">
+        <StackLayout x:Name="ServiceRecordStack"
+                     Orientation="Vertical"
+                     VerticalOptions="FillAndExpand"
+                     BackgroundColor="LightGray"
+                     Padding="5,5,5,5">
+        </StackLayout>
+      </ScrollView>
+      <!-- Horse/Date Display -->
+      <Grid VerticalOptions="End">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="1" />
+          <RowDefinition Height="1" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.RowSpacing>
+          <x:Double>0</x:Double>
+        </Grid.RowSpacing>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="2" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.ColumnSpacing>
+          <x:Double>0</x:Double>
+        </Grid.ColumnSpacing>
+        <Grid.Children>
+          <BoxView BackgroundColor="SlateGray"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          <BoxView BackgroundColor="LightGray"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          <Label x:Name="SelectedDateLabel"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Grid.Row="2"
+                 Grid.Column="0" />
+          <BoxView BackgroundColor="LightGray"
+                   Grid.Row="2"
+                   Grid.Column="1" />
+          <Label x:Name="SelectedHorseLabel"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Grid.Row="2"
+                 Grid.Column="2" />
+        </Grid.Children>
+      </Grid>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

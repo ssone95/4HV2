@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_4H_Application.Views.Pages.Projects.ProjectRequirementsPage">
+  <ContentPage.Title>
+    <x:String>Project Requirements</x:String>
+  </ContentPage.Title>
+  <ContentPage.Content>
+    <ScrollView>
+      <TableView HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 HasUnevenRows="True">
+        <TableRoot>
+          <TableSection x:Name="RequirementsList" />
+        </TableRoot>
+      </TableView>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

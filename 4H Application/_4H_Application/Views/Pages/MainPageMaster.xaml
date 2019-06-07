@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_4H_Application.Views.Pages.MainPageMaster"
+             Title="Master"
+             BackgroundColor="WhiteSmoke">
+  <StackLayout>
+    <ListView x:Name="MenuItemsListView"
+              HasUnevenRows="True"
+              ItemsSource="{Binding MenuItems}">
+      <ListView.Header>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1" />
+          </Grid.RowDefinitions>
+          <Image Grid.Column="1"
+                 Grid.Row="1"
+                 Aspect="AspectFit"
+                 Source="img_titlebar.png" />
+          <Label Grid.Column="1"
+                 Grid.Row="3"
+                 Text="PA 4-H Horse Book"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 FontSize="24"
+                 HorizontalTextAlignment="Center" />
+          <BoxView Grid.Column="1"
+                   Grid.Row="4"
+                   BackgroundColor="LightGray" />
+        </Grid>
+      </ListView.Header>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Padding="15,10" 
+                         HorizontalOptions="FillAndExpand">
+              <Label VerticalOptions="FillAndExpand" 
+                     VerticalTextAlignment="Center" 
+                     Text="{Binding MenuTitle}" 
+                     FontSize="18"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

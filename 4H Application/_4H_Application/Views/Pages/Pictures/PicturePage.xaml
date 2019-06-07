@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_4H_Application.Views.Pages.Pictures.PicturePage">
+  <ContentPage.Title>
+    <x:String>My Pictures</x:String>
+  </ContentPage.Title>
+  <ContentPage.Content>
+    <StackLayout>
+      <StackLayout.Resources>
+        <ResourceDictionary>
+          <Style x:Key="Separator"
+                 TargetType="BoxView">
+            <Setter Property="Margin"
+                    Value="10,0,10,0" />
+            <Setter Property="HeightRequest"
+                    Value="1" />
+            <Setter Property="Color"
+                    Value="LightGray" />
+          </Style>
+        </ResourceDictionary>
+      </StackLayout.Resources>
+      <StackLayout.Children>
+        <!-- Picture Page Caption -->
+        <Label Text="Use this section to manage all of the pictures you've taken for this horse.  Each horse will have different associated pictures."
+               Margin="10,10,10,5"/>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- List Of Photos -->
+        <ListView x:Name="PhotoListView"
+                  Margin="10,0,10,0"
+                  HasUnevenRows="True"
+                  VerticalOptions="FillAndExpand"
+                  ItemTapped="PhotoListView_ItemTapped">
+          <!-- ListView Item Template -->
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ImageCell ImageSource="{Binding FilePath}"
+                         Text="{Binding Caption}" />
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        <!-- Photo Buttons -->
+        <BoxView Style="{StaticResource Separator}" />
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="End"
+                     Margin="0,0,0,0">
+          <Button x:Name="TakePictureButton"
+                  Text="Take Picture"
+                  BackgroundColor="Transparent"
+                  BorderColor="DarkGray"
+                  Margin="5,0,5,5"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="Center"
+                  Clicked="TakePictureButton_Clicked" />
+          <Button x:Name="SelectPictureButton"
+                  Text="Select Picture"
+                  BackgroundColor="Transparent"
+                  BorderColor="DarkGray"
+                  Margin="5,0,5,5"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="Center"
+                  Clicked="SelectPictureButton_Clicked" />
+        </StackLayout>
+      </StackLayout.Children>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

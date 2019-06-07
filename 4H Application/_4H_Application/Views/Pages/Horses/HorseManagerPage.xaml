@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:_4H_Application.Views.Components.Horses"
+             x:Class="_4H_Application.Views.Pages.Horses.HorseManagerPage"
+             AutomationId="HorseManagerPage">
+  <ContentPage.Title>My Horses</ContentPage.Title>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="AddHorseButton"
+                 AutomationId="AddHorseButton"
+                 Clicked="AddHorseButton_Clicked">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource">
+          <On Platform="iOS" Value="ic_add_black" />
+          <On Platform="Android" Value="ic_add_white" />
+        </OnPlatform>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>
+    <!-- Horse Display Section -->
+    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="FillAndExpand">
+      <StackLayout.Resources>
+        <ResourceDictionary>
+          <Style x:Key="Separator"
+                 TargetType="BoxView">
+            <Setter Property="Margin"
+                    Value="10,0,10,0" />
+            <Setter Property="HeightRequest"
+                    Value="1" />
+            <Setter Property="Color"
+                    Value="LightGray" />
+          </Style>
+        </ResourceDictionary>
+      </StackLayout.Resources>
+      <!-- Horse List Note Section -->
+      <Label AutomationId="HorseListNote"
+             Text="Use this section to track all of your horses.  Each horse represents a single record book, and the rest of the application pages will be modified based on the current horse."
+             Margin="10,10,10,10" />
+      <BoxView Style="{StaticResource Separator}" />
+      <!-- Horse List View -->
+      <ListView x:Name="HorseManagerListView"
+                AutomationId="HorseManagerListView"
+                ItemTapped="OnItemSelected"
+                IsGroupingEnabled="False">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <c:HorseViewCell />
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

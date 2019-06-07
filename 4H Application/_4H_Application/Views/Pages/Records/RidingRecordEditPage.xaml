@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:_4H_Application.Views.Components"
+             x:Class="_4H_Application.Views.Pages.Records.RidingRecordEditPage">
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout>
+        <StackLayout.Resources>
+          <ResourceDictionary>
+            <Style x:Key="GridStyle"
+                   TargetType="Grid">
+              <Setter Property="Padding"
+                      Value="15,10,15,10" />
+              <Setter Property="RowSpacing"
+                      Value="0" />
+              <Setter Property="ColumnSpacing"
+                      Value="5" />
+            </Style>
+            <RowDefinitionCollection x:Key="GridRows">
+              <RowDefinition Height="Auto" />
+            </RowDefinitionCollection>
+            <ColumnDefinitionCollection x:Key="GridColumns">
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </ColumnDefinitionCollection>
+            <Style x:Key="Separator"
+                   TargetType="BoxView">
+              <Setter Property="Margin"
+                      Value="10,0,10,0" />
+              <Setter Property="HeightRequest"
+                      Value="1" />
+              <Setter Property="Color"
+                      Value="LightGray" />
+            </Style>
+          </ResourceDictionary>
+        </StackLayout.Resources>
+        <!-- Navigation Buttons -->
+        <StackLayout Orientation="Horizontal">
+          <StackLayout.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+              <On Platform="iOS" Value="8,20,8,10" />
+              <On Platform="Android" Value="5,5,5,5" />
+            </OnPlatform>
+          </StackLayout.Margin>
+          <Button x:Name="CancelButton"
+                  Text="Cancel"
+                  HorizontalOptions="StartAndExpand"
+                  BackgroundColor="Transparent"
+                  Clicked="CancelButton_Clicked">
+            <Button.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Android" Value="16" />
+              </OnPlatform>
+            </Button.FontSize>
+          </Button>
+          <Button x:Name="SaveButton"
+                  Text="Save"
+                  HorizontalOptions="EndAndExpand"
+                  BackgroundColor="Transparent"
+                  Clicked="SaveButton_Clicked">
+            <Button.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Android" Value="16" />
+              </OnPlatform>
+            </Button.FontSize>
+          </Button>
+        </StackLayout>
+        <!-- Riding Record Information -->
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Riding Record Description -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Description"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <c:ExpandableEditor x:Name="DescriptionEditor"
+                              Text="{Binding Description}"
+                              TextChanged="FieldModified"
+                              HorizontalOptions="FillAndExpand"
+                              Grid.Row="0"
+                              Grid.Column="1"
+                              Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Riding Record Start Time -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Start Time"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <TimePicker x:Name="StartTimePicker"
+                      Time="{Binding Start}"
+                      Format="h:mm tt"
+                      HorizontalOptions="Fill"
+                      Grid.Row="0"
+                      Grid.Column="1" />
+          <Button x:Name="StartTimeButton"
+                  Text="Now"
+                  BackgroundColor="Transparent"
+                  BorderWidth="1"
+                  BorderColor="SlateGray"
+                  CornerRadius="5"
+                  Clicked="StartTimeButton_Clicked"
+                  HorizontalOptions="Fill"
+                  Grid.Row="0"
+                  Grid.Column="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Riding Record End Time -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="End Time"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <TimePicker x:Name="EndTimePicker"
+                      Time="{Binding End}"
+                      Format="h:mm tt"
+                      HorizontalOptions="Fill"
+                      Grid.Row="0"
+                      Grid.Column="1" />
+          <Button x:Name="EndTimeButton"
+                  Text="Now"
+                  BackgroundColor="Transparent"
+                  BorderWidth="1"
+                  BorderColor="SlateGray"
+                  CornerRadius="5"
+                  Clicked="EndTimeButton_Clicked"
+                  HorizontalOptions="Fill"
+                  Grid.Row="0"
+                  Grid.Column="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Delete Button -->
+        <StackLayout Orientation="Vertical"
+                     Padding="15,10,15,10">
+          <Button x:Name="DeleteButton"
+                  Text="Delete"
+                  TextColor="IndianRed"
+                  HorizontalOptions="FillAndExpand"
+                  Clicked="DeleteButton_Clicked" />
+        </StackLayout>
+        <BoxView Style="{StaticResource Separator}" />
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

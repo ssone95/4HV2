@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:_4H_Application.Views.Components"
+             x:Class="_4H_Application.Views.Pages.Horses.HorseEditPage"
+             AutomationId="HorseEditPage">
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout>
+        <StackLayout.Resources>
+          <ResourceDictionary>
+            <Style x:Key="GridStyle"
+                   TargetType="Grid">
+              <Setter Property="Padding"
+                      Value="15,10,15,10" />
+              <Setter Property="RowSpacing"
+                      Value="0" />
+              <Setter Property="ColumnSpacing"
+                      Value="5" />
+            </Style>
+            <RowDefinitionCollection x:Key="GridRows">
+              <RowDefinition Height="Auto" />
+            </RowDefinitionCollection>
+            <ColumnDefinitionCollection x:Key="GridColumns">
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </ColumnDefinitionCollection>
+            <Style x:Key="Separator"
+                   TargetType="BoxView">
+              <Setter Property="Margin"
+                      Value="10,0,10,0" />
+              <Setter Property="HeightRequest"
+                      Value="1" />
+              <Setter Property="Color"
+                      Value="LightGray" />
+            </Style>
+          </ResourceDictionary>
+        </StackLayout.Resources>
+        <!-- Navigation Buttons -->
+        <StackLayout Orientation="Horizontal">
+          <StackLayout.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+              <On Platform="iOS" Value="8,20,8,10" />
+              <On Platform="Default" Value="5,5,5,5" />
+            </OnPlatform>
+          </StackLayout.Margin>
+          <Button x:Name="CancelButton"
+                  AutomationId="CancelButton"
+                  Text="Cancel"
+                  HorizontalOptions="StartAndExpand"
+                  BackgroundColor="Transparent"
+                  Clicked="CancelButton_Clicked">
+            <Button.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Default" Value="16" />
+              </OnPlatform>
+            </Button.FontSize>
+          </Button>
+          <Button x:Name="SaveButton"
+                  AutomationId="SaveButton"
+                  Text="Save"
+                  HorizontalOptions="EndAndExpand"
+                  BackgroundColor="Transparent"
+                  Clicked="SaveButton_Clicked">
+            <Button.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Default" Value="16" />
+              </OnPlatform>
+            </Button.FontSize>
+          </Button>
+        </StackLayout>
+        <!-- Horse Information -->
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Information Section Label -->
+        <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Horse Information"
+                 TextColor="#202020"
+                 FontSize="Large"
+                 HorizontalOptions="FillAndExpand"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="3" />
+        </Grid>
+        <!-- Horse Name -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Name"
+                 AutomationId="NameLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="HorseNameEntry"
+                 AutomationId="HorseNameEntry"
+                 Text="{Binding Name}"
+                 TextChanged="FieldModified"
+                 Placeholder="Name"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Age -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Age"
+                 AutomationId="AgeLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="HorseAgeEntry"
+                 AutomationId="HorseAgeEntry"
+                 Text="{Binding Age}"
+                 TextChanged="FieldModified"
+                 Keyboard="Numeric"
+                 Placeholder="Age"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Sex -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Sex"
+                 AutomationId="SexLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Picker x:Name="HorseSexPicker"
+                  AutomationId="HorseSexPicker"
+                  SelectedIndex="{Binding Sex}"
+                  SelectedIndexChanged="FieldModified"
+                  HorizontalOptions="FillAndExpand"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2">
+            <Picker.Items>
+              <x:String>Filly</x:String>
+              <x:String>Colt</x:String>
+              <x:String>Mare</x:String>
+              <x:String>Gelding</x:String>
+            </Picker.Items>
+          </Picker>
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Breed -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Breed"
+                 AutomationId="BreedLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <c:BreedPicker x:Name="HorseBreedPicker"
+                         AutomationId="HorseBreedPicker"
+                         Breed="{Binding Breed}"
+                         SizeChanged="FieldModified"
+                         HorizontalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.Column="1"
+                         Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Appearance Section -->
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Appearance Section Label -->
+        <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Horse Appearance"
+                 TextColor="#202020"
+                 FontSize="Large"
+                 HorizontalOptions="FillAndExpand"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="3" />
+        </Grid>
+        <!-- Horse Height -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label x:Name="HorseHeightLabel"
+                 AutomationId="HorseHeightLabel"
+                 Text="Height"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="HorseHeightEntry"
+                 AutomationId="HorseHeightEntry"
+                 Keyboard="Numeric"
+                 Text="{Binding Height}"
+                 TextChanged="FieldModified"
+                 Placeholder="Height"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Weight-->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label x:Name="HorseWeightLabel"
+                 AutomationId="HorseWeightLabel"
+                 Text="Weight"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="HorseWeightEntry"
+                 AutomationId="HorseWeightEntry"
+                 Keyboard="Numeric"
+                 Text="{Binding Weight}"
+                 TextChanged="FieldModified"
+                 Placeholder="Weight"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Color -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Color"
+                 AutomationId="ColorLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <c:ExpandableEditor x:Name="HorseColorEditor"
+                              AutomationId="HorseColorEditor"
+                              Text="{Binding Color}"
+                              TextChanged="FieldModified"
+                              HorizontalOptions="FillAndExpand"
+                              Grid.Row="0"
+                              Grid.Column="1"
+                              Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Markings -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Markings"
+                 AutomationId="MarkingsLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <c:ExpandableEditor x:Name="HorseMarkingsEditor"
+                              AutomationId="HorseMarkingsEditor"
+                              Text="{Binding Markings}"
+                              TextChanged="FieldModified"
+                              HorizontalOptions="FillAndExpand"
+                              Grid.Row="0"
+                              Grid.Column="1"
+                              Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Pedigree Section -->
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Pedigree Section Label -->
+        <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Horse Pedigree"
+                 TextColor="#202020"
+                 FontSize="Large"
+                 HorizontalOptions="FillAndExpand"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="3" />
+        </Grid>
+        <!-- Horse Pedigree -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Pedigree"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="PedigreeEntry"
+                 AutomationId="PedigreeEntry"
+                 Text="{Binding Pedigree}"
+                 TextChanged="FieldModified"
+                 Placeholder="Breed"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Sire Pedigree -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Sire Pedigree"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="SireEntry"
+                 AutomationId="SireEntry"
+                 Text="{Binding Sire}"
+                 TextChanged="FieldModified"
+                 Placeholder="Breed"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Paternal Grand Sire Pedigree -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Paternal Grand Sire Pedigree"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="PaternalGrandSireEntry"
+                 AutomationId="PaternalGrandSireEntry"
+                 Text="{Binding PaternalGrandSire}"
+                 TextChanged="FieldModified"
+                 Placeholder="Breed"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Paternal Grand Dam Pedigree -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Paternal Grand Dam Pedigree"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="PaternalGrandDamEntry"
+                 AutomationId="PaternalGrandDamEntry"
+                 Text="{Binding PaternalGrandDam}"
+                 TextChanged="FieldModified"
+                 Placeholder="Breed"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Dam Pedigree -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Dam Pedigree"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="DamEntry"
+                 AutomationId="DamEntry"
+                 Text="{Binding Dam}"
+                 TextChanged="FieldModified"
+                 Placeholder="Breed"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Maternal Grand Sire Pedigree -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Maternal Grand Sire Pedigree"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="MaternalGrandSireEntry"
+                 AutomationId="MaternalGrandSireEntry"
+                 Text="{Binding MaternalGrandSire}"
+                 TextChanged="FieldModified"
+                 Placeholder="Breed"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Maternal Grand Dam Pedigree -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Maternal Grand Dam Pedigree"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <Entry x:Name="MaternalGrandDamEntry"
+                 AutomationId="MaternalGrandDamEntry"
+                 Text="{Binding MaternalGrandDam}"
+                 TextChanged="FieldModified"
+                 Placeholder="Breed"
+                 HorizontalOptions="FillAndExpand"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Delete Button -->
+        <StackLayout Orientation="Vertical"
+                     Padding="15,10,15,10">
+          <Button x:Name="DeleteButton"
+                  AutomationId="DeleteButton"
+                  Text="Delete"
+                  TextColor="IndianRed"
+                  HorizontalOptions="FillAndExpand"
+                  Clicked="DeleteButton_Clicked" />
+        </StackLayout>
+        <BoxView Style="{StaticResource Separator}" />
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

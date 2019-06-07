@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:_4H_Application.Views.Components.Records"
+             x:Class="_4H_Application.Views.Pages.Records.RecordSelectPage">
+  <ContentPage.Title>
+    <x:String>My Record Book</x:String>
+  </ContentPage.Title>
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical"
+                 VerticalOptions="FillAndExpand"
+                 Spacing="0">
+      <!-- Record Book Pages -->
+      <ScrollView VerticalOptions="FillAndExpand"
+                  BackgroundColor="LightGray">
+        <StackLayout Orientation="Vertical"
+                     Padding="5,5,5,5"
+                     Spacing="5"
+                     BackgroundColor="LightGray">
+          <StackLayout.Resources>
+            <ResourceDictionary>
+              <Style x:Key="RecordStackStyle"
+                     TargetType="ContentView">
+                <Setter Property="Padding"
+                        Value="0,0,1,1" />
+                <Setter Property="BackgroundColor"
+                        Value="SlateGray" />
+              </Style>
+              <Style x:Key="RecordGridStyle"
+                     TargetType="Grid">
+                <Setter Property="Padding"
+                        Value="10,5,10,5" />
+                <Setter Property="BackgroundColor"
+                        Value="#F9F9F9" />
+                <Setter Property="RowSpacing"
+                        Value="0" />
+                <Setter Property="ColumnSpacing"
+                        Value="10" />
+              </Style>
+              <RowDefinitionCollection x:Key="RecordRows">
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+              </RowDefinitionCollection>
+              <ColumnDefinitionCollection x:Key="RecordColumns">
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </ColumnDefinitionCollection>
+              <Style x:Key="Separator"
+                     TargetType="BoxView">
+                <Setter Property="Margin"
+                        Value="10,0,10,0" />
+                <Setter Property="HeightRequest"
+                        Value="1" />
+                <Setter Property="Color"
+                        Value="DarkGray" />
+              </Style>
+            </ResourceDictionary>
+          </StackLayout.Resources>
+          <!-- Record Note Section -->
+          <ContentView Style="{StaticResource RecordStackStyle}">
+            <ContentView BackgroundColor="#F9F9F9">
+              <Label AutomationId="RecordSelectLabel"
+                     Text="Use this section to track all of the activities for your horses.  Dates with entries will appear with an indicator on the main calendar page, and these entries will be used to populate your record book."
+                     Margin="15,10,15,10" />
+            </ContentView>
+          </ContentView>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- Activity Record Component -->
+          <ContentView Style="{StaticResource RecordStackStyle}">
+            <Grid Style="{StaticResource RecordGridStyle}"
+                  RowDefinitions="{StaticResource RecordRows}"
+                  ColumnDefinitions="{StaticResource RecordColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ActivityRecord_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Activities"
+                       AutomationId="ActivitiesBox"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <Label x:Name="ActivityCountLabel"
+                       AutomationId="ActivitiesCount"
+                       Text="0 Entries"
+                       FontSize="Small"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="End"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.RowSpan="2"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Riding Record Panel -->
+          <ContentView Style="{StaticResource RecordStackStyle}">
+            <Grid Style="{StaticResource RecordGridStyle}"
+                  RowDefinitions="{StaticResource RecordRows}"
+                  ColumnDefinitions="{StaticResource RecordColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="RidingRecord_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Riding, Driving, Training"
+                       AutomationId="RidingBox"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <Label x:Name="RidingCountLabel"
+                       AutomationId="RidingCount"
+                       Text="0 Entries"
+                       FontSize="Small"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="End"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.RowSpan="2"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Feed Record Panel -->
+          <ContentView Style="{StaticResource RecordStackStyle}">
+            <Grid Style="{StaticResource RecordGridStyle}"
+                  RowDefinitions="{StaticResource RecordRows}"
+                  ColumnDefinitions="{StaticResource RecordColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="FeedRecord_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Feed Record"
+                       AutomationId="FeedBox"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <Label x:Name="FeedCountLabel"
+                       AutomationId="FeedCount"
+                       Text="0 Entries"
+                       FontSize="Small"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="End"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.RowSpan="2"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Bedding Record Panel -->
+          <ContentView Style="{StaticResource RecordStackStyle}">
+            <Grid Style="{StaticResource RecordGridStyle}"
+                  RowDefinitions="{StaticResource RecordRows}"
+                  ColumnDefinitions="{StaticResource RecordColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BeddingRecord_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Bedding Record"
+                       AutomationId="BeddingBox"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <Label x:Name="BeddingCountLabel"
+                       AutomationId="BeddingCount"
+                       Text="0 Entries"
+                       FontSize="Small"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="End"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.RowSpan="2"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Labor Record Panel -->
+          <ContentView Style="{StaticResource RecordStackStyle}">
+            <Grid Style="{StaticResource RecordGridStyle}"
+                  RowDefinitions="{StaticResource RecordRows}"
+                  ColumnDefinitions="{StaticResource RecordColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="LaborRecord_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Labor Record"
+                       AutomationId="LaborBox"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <Label x:Name="LaborCountLabel"
+                       AutomationId="LaborCount"
+                       Text="0 Entries"
+                       FontSize="Small"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="End"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.RowSpan="2"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Service Record Panel -->
+          <ContentView Style="{StaticResource RecordStackStyle}">
+            <Grid Style="{StaticResource RecordGridStyle}"
+                  RowDefinitions="{StaticResource RecordRows}"
+                  ColumnDefinitions="{StaticResource RecordColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ServiceRecord_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Service Record"
+                       AutomationId="ServiceBox"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <Label x:Name="ServiceCountLabel"
+                       AutomationId="ServiceCount"
+                       Text="0 Entries"
+                       FontSize="Small"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="End"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.RowSpan="2"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Expense Record Panel -->
+          <ContentView Style="{StaticResource RecordStackStyle}">
+            <Grid Style="{StaticResource RecordGridStyle}"
+                  RowDefinitions="{StaticResource RecordRows}"
+                  ColumnDefinitions="{StaticResource RecordColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ExpenseRecord_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Expense Record"
+                       AutomationId="ExpenseBox"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <Label x:Name="ExpenseCountLabel"
+                       AutomationId="ExpenseCount"
+                       Text="0 Entries"
+                       FontSize="Small"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="End"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.RowSpan="2"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+        </StackLayout>
+      </ScrollView>
+      <!-- Horse/Date Display -->
+      <Grid VerticalOptions="End">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="1" />
+          <RowDefinition Height="1" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.RowSpacing>
+          <x:Double>0</x:Double>
+        </Grid.RowSpacing>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="2" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.ColumnSpacing>
+          <x:Double>0</x:Double>
+        </Grid.ColumnSpacing>
+        <Grid.Children>
+          <BoxView BackgroundColor="SlateGray"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          <BoxView BackgroundColor="LightGray"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          <Label x:Name="SelectedDateLabel"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Grid.Row="2"
+                 Grid.Column="0" />
+          <BoxView BackgroundColor="LightGray"
+                   Grid.Row="2"
+                   Grid.Column="1" />
+          <Label x:Name="SelectedHorseLabel"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Grid.Row="2"
+                 Grid.Column="2" />
+        </Grid.Children>
+      </Grid>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

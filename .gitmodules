@@ -1,0 +1,3 @@
+[submodule "PdfSharp.Xamarin"]
+	path = PdfSharp.Xamarin
+	url = https://github.com/BrianRistau/PdfSharp.Xamarin

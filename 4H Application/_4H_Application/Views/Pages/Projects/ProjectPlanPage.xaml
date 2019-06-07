@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:_4H_Application.Views.Components"
+             x:Class="_4H_Application.Views.Pages.Projects.ProjectPlanPage">
+  <ContentPage.Title>
+    <x:String>Project Plan</x:String>
+  </ContentPage.Title>
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout>
+        <StackLayout.Resources>
+          <ResourceDictionary>
+            <Style x:Key="GridStyle"
+                   TargetType="Grid">
+              <Setter Property="Padding"
+                      Value="15,10,15,10" />
+              <Setter Property="RowSpacing"
+                      Value="5" />
+              <Setter Property="ColumnSpacing"
+                      Value="5" />
+            </Style>
+            <RowDefinitionCollection x:Key="GridRows">
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </RowDefinitionCollection>
+            <ColumnDefinitionCollection x:Key="GridColumns">
+              <ColumnDefinition Width="*" />
+            </ColumnDefinitionCollection>
+            <Style x:Key="Separator"
+                   TargetType="BoxView">
+              <Setter Property="Margin"
+                      Value="10,0,10,0" />
+              <Setter Property="HeightRequest"
+                      Value="1" />
+              <Setter Property="Color"
+                      Value="LightGray" />
+            </Style>
+          </ResourceDictionary>
+        </StackLayout.Resources>
+        <!-- Navigation Buttons -->
+        <StackLayout Orientation="Horizontal">
+          <StackLayout.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+              <On Platform="iOS" Value="8,20,8,10" />
+              <On Platform="Default" Value="5,5,5,5" />
+            </OnPlatform>
+          </StackLayout.Margin>
+          <Button x:Name="CancelButton"
+                  AutomationId="CancelButton"
+                  Text="Cancel"
+                  HorizontalOptions="StartAndExpand"
+                  BackgroundColor="Transparent"
+                  Clicked="CancelButton_Clicked">
+            <Button.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Default" Value="16" />
+              </OnPlatform>
+            </Button.FontSize>
+          </Button>
+          <Button x:Name="SaveButton"
+                  AutomationId="SaveButton"
+                  Text="Save"
+                  HorizontalOptions="EndAndExpand"
+                  BackgroundColor="Transparent"
+                  Clicked="SaveButton_Clicked">
+            <Button.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Default" Value="16" />
+              </OnPlatform>
+            </Button.FontSize>
+          </Button>
+        </StackLayout>
+        <!-- Information Editors -->
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Horse Plan -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="Kind and breed of horse/pony I will care for (example: Appaloosa foal, Arabian mare)."
+                 AutomationId="HorsePlanLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <c:ExpandableEditor x:Name="HorsePlanEditor"
+                              AutomationId="HorsePlanEditor"
+                              HorizontalOptions="FillAndExpand"
+                              MinimumHeightRequest="100"
+                              TextChanged="Editor_TextChanged"
+                              Grid.Row="1"
+                              Grid.Column="0" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Caring Plan -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="What I will do to take care of them (example: I will evaluate the body condition of my horse)."
+                 AutomationId="CaringPlanLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <c:ExpandableEditor x:Name="CaringPlanEditor"
+                              AutomationId="CaringPlanEditor"
+                              HorizontalOptions="FillAndExpand"
+                              MinimumHeightRequest="100"
+                              TextChanged="Editor_TextChanged"
+                              Grid.Row="1"
+                              Grid.Column="0" />
+        </Grid>
+
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Learning Plan -->
+        <Grid Style="{StaticResource GridStyle}"
+              RowDefinitions="{StaticResource GridRows}"
+              ColumnDefinitions="{StaticResource GridColumns}">
+          <Label Text="What I want to learn and accomplish (example: I want to train and show my horse in pleasure driving)."
+                 AutomationId="LearningPlanLabel"
+                 HorizontalOptions="Start"
+                 HorizontalTextAlignment="Start"
+                 Grid.Row="0"
+                 Grid.Column="0" />
+          <c:ExpandableEditor x:Name="LearningPlanEditor"
+                              AutomationId="LearningPlanEditor"
+                              HorizontalOptions="FillAndExpand"
+                              MinimumHeightRequest="100"
+                              TextChanged="Editor_TextChanged"
+                              Grid.Row="1"
+                              Grid.Column="0" />
+        </Grid>
+        <BoxView Style="{StaticResource Separator}" />
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

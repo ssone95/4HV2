@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_4H_Application.Views.Pages.Projects.ProjectSelectPage">
+  <ContentPage.Title>
+    <x:String>My Project</x:String>
+  </ContentPage.Title>
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical"
+                 VerticalOptions="FillAndExpand"
+                 Spacing="0">
+      <!-- Project Button Container -->
+      <ScrollView VerticalOptions="FillAndExpand"
+                  BackgroundColor="LightGray">
+        <StackLayout Orientation="Vertical"
+                     Padding="5,5,5,5"
+                     Spacing="5"
+                     BackgroundColor="LightGray">
+          <StackLayout.Resources>
+            <ResourceDictionary>
+              <Style x:Key="ProjectStackStyle"
+                     TargetType="ContentView">
+                <Setter Property="Padding"
+                        Value="0,0,1,1" />
+                <Setter Property="BackgroundColor"
+                        Value="SlateGray" />
+              </Style>
+              <Style x:Key="ProjectGridStyle"
+                     TargetType="Grid">
+                <Setter Property="Padding"
+                        Value="10,5,10,5" />
+                <Setter Property="BackgroundColor"
+                        Value="#F9F9F9" />
+                <Setter Property="RowSpacing"
+                        Value="0" />
+                <Setter Property="ColumnSpacing"
+                        Value="10" />
+              </Style>
+              <RowDefinitionCollection x:Key="ProjectRows">
+                <RowDefinition Height="Auto" />
+              </RowDefinitionCollection>
+              <ColumnDefinitionCollection x:Key="ProjectColumns">
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </ColumnDefinitionCollection>
+              <Style x:Key="Separator"
+                     TargetType="BoxView">
+                <Setter Property="Margin"
+                        Value="10,0,10,0" />
+                <Setter Property="HeightRequest"
+                        Value="1" />
+                <Setter Property="Color"
+                        Value="DarkGray" />
+              </Style>
+            </ResourceDictionary>
+          </StackLayout.Resources>
+          <!-- Project Note Section -->
+          <ContentView Style="{StaticResource ProjectStackStyle}">
+            <StackLayout BackgroundColor="#F9F9F9">
+              <Label AutomationId="ProjectSelectLabel1"
+                     Text="Use this section to track all of your project progress.  This page only applies to the current selected horse, which is displayed on the bottom of the screen."
+                     Margin="15,10,15,0" />
+              <Label AutomationId="ProjectSelectLabel2"
+                     Text="Complete the &quot;Project Plan&quot; section at the start of the 4-H year, and complete the &quot;Project Experiences&quot; and &quot;Project Story&quot; sections as the year goes on."
+                     Margin="15,5,15,10" />
+            </StackLayout>
+          </ContentView>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- Project Requirements -->
+          <ContentView Style="{StaticResource ProjectStackStyle}">
+            <Grid Style="{StaticResource ProjectGridStyle}"
+                  RowDefinitions="{StaticResource ProjectRows}"
+                  ColumnDefinitions="{StaticResource ProjectColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ProjectRequirements_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Project Requirements"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Project Plan -->
+          <ContentView Style="{StaticResource ProjectStackStyle}">
+            <Grid Style="{StaticResource ProjectGridStyle}"
+                  RowDefinitions="{StaticResource ProjectRows}"
+                  ColumnDefinitions="{StaticResource ProjectColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ProjectPlan_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Project Plan"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Project Experiences -->
+          <ContentView Style="{StaticResource ProjectStackStyle}">
+            <Grid Style="{StaticResource ProjectGridStyle}"
+                  RowDefinitions="{StaticResource ProjectRows}"
+                  ColumnDefinitions="{StaticResource ProjectColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ProjectExperiences_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Project Experiences"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+          <!-- Project Story -->
+          <ContentView Style="{StaticResource ProjectStackStyle}">
+            <Grid Style="{StaticResource ProjectGridStyle}"
+                  RowDefinitions="{StaticResource ProjectRows}"
+                  ColumnDefinitions="{StaticResource ProjectColumns}">
+              <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ProjectStory_Tapped" />
+              </Grid.GestureRecognizers>
+              <Grid.Children>
+                <Label Text="Project Story"
+                       FontSize="Medium"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Start"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <BoxView BackgroundColor="LightGray"
+                         HeightRequest="100"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Grid.Row="0"
+                         Grid.Column="1" />
+              </Grid.Children>
+            </Grid>
+          </ContentView>
+        </StackLayout>
+      </ScrollView>
+      <!-- Horse/Year Display -->
+      <Grid VerticalOptions="End">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="1" />
+          <RowDefinition Height="1" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.RowSpacing>
+          <x:Double>0</x:Double>
+        </Grid.RowSpacing>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="2" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.ColumnSpacing>
+          <x:Double>0</x:Double>
+        </Grid.ColumnSpacing>
+        <Grid.Children>
+          <BoxView BackgroundColor="SlateGray"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          <BoxView BackgroundColor="LightGray"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          <Label x:Name="RecordHorseLabel"
+                 Text="[Placeholder]"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Grid.Row="2"
+                 Grid.Column="0" />
+          <BoxView BackgroundColor="LightGray"
+                   Grid.Row="2"
+                   Grid.Column="1" />
+          <Label x:Name="RecordLevelLabel"
+                 Text="[Placeholder]"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Grid.Row="2"
+                 Grid.Column="2" />
+        </Grid.Children>
+      </Grid>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

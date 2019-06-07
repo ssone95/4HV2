@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c1="clr-namespace:_4H_Application.Views.Components.Records"
+             x:Class="_4H_Application.Views.Pages.Records.CalendarPage">
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="FillAndExpand"
+                 Spacing="0">
+      <!-- Month Navigation Buttons -->
+      <StackLayout Orientation="Horizontal"
+                   VerticalOptions="Start">
+        <StackLayout.Padding>
+          <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="12,5,12,5" />
+            <On Platform="Android" Value="0,0,0,0" />
+          </OnPlatform>
+        </StackLayout.Padding>
+        <Button x:Name="MonthBackButton"
+                AutomationId="MonthBackButton"
+                Text="&lt;"
+                HorizontalOptions="Start"
+                BackgroundColor="Transparent"
+                Clicked="MonthBackButton_Clicked" />
+        <Label x:Name="MonthNameLabel"
+               AutomationId="MonthNameLabel"
+               FontSize="Medium"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="Center"
+               HorizontalTextAlignment="Center" />
+        <Button x:Name="MonthForwardButton"
+                AutomationId="MonthForwardButton"
+                Text="&gt;"
+                HorizontalOptions="End"
+                BackgroundColor="Transparent"
+                Clicked="MonthForwardButton_Clicked" />
+      </StackLayout>
+      <BoxView BackgroundColor="SlateGray"
+               AutomationId="CalendarView"
+               HeightRequest="1"
+               HorizontalOptions="FillAndExpand" />
+      <!-- Calendar Header Cells -->
+      <Grid x:Name="CalendarHeaderCells"
+            AutomationId="CalendarHeaders"
+            IsVisible="True"
+            BackgroundColor="LightGray"
+            Padding="4,4,4,4">
+        <Grid.Resources>
+          <ResourceDictionary>
+            <Style x:Key="HeaderCellBorderStyle"
+                   TargetType="ContentView">
+              <Setter Property="Padding"
+                      Value="1,1,1,1" />
+              <Setter Property="BackgroundColor"
+                      Value="SlateGray" />
+            </Style>
+            <Style x:Key="HeaderCellBackgroundStyle"
+                   TargetType="ContentView">
+              <Setter Property="BackgroundColor"
+                      Value="#F9F9F9" />
+            </Style>
+            <Style x:Key="HeaderCellLabelStyle"
+                   TargetType="Label">
+              <Setter Property="HorizontalOptions"
+                      Value="Center" />
+              <Setter Property="HorizontalTextAlignment"
+                      Value="Center" />
+              <Setter Property="VerticalTextAlignment"
+                      Value="Center" />
+            </Style>
+          </ResourceDictionary>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.ColumnSpacing>
+          <x:Double>2</x:Double>
+        </Grid.ColumnSpacing>
+        <Grid.Children>
+          <ContentView Style="{StaticResource HeaderCellBorderStyle}"
+                       Grid.Row="0"
+                       Grid.Column="0">
+            <ContentView Style="{StaticResource HeaderCellBackgroundStyle}">
+              <Label Text="Su"
+                     Style="{StaticResource HeaderCellLabelStyle}" />
+            </ContentView>
+          </ContentView>
+          <ContentView Style="{StaticResource HeaderCellBorderStyle}"
+                       Grid.Row="0"
+                       Grid.Column="1">
+            <ContentView Style="{StaticResource HeaderCellBackgroundStyle}">
+              <Label Text="Mo"
+                     Style="{StaticResource HeaderCellLabelStyle}" />
+            </ContentView>
+          </ContentView>
+          <ContentView Style="{StaticResource HeaderCellBorderStyle}"
+                       Grid.Row="0"
+                       Grid.Column="2">
+            <ContentView Style="{StaticResource HeaderCellBackgroundStyle}">
+              <Label Text="Tu"
+                     Style="{StaticResource HeaderCellLabelStyle}" />
+            </ContentView>
+          </ContentView>
+          <ContentView Style="{StaticResource HeaderCellBorderStyle}"
+                       Grid.Row="0"
+                       Grid.Column="3">
+            <ContentView Style="{StaticResource HeaderCellBackgroundStyle}">
+              <Label Text="We"
+                     Style="{StaticResource HeaderCellLabelStyle}" />
+            </ContentView>
+          </ContentView>
+          <ContentView Style="{StaticResource HeaderCellBorderStyle}"
+                       Grid.Row="0"
+                       Grid.Column="4">
+            <ContentView Style="{StaticResource HeaderCellBackgroundStyle}">
+              <Label Text="Th"
+                     Style="{StaticResource HeaderCellLabelStyle}" />
+            </ContentView>
+          </ContentView>
+          <ContentView Style="{StaticResource HeaderCellBorderStyle}"
+                       Grid.Row="0"
+                       Grid.Column="5">
+            <ContentView Style="{StaticResource HeaderCellBackgroundStyle}">
+              <Label Text="Fr"
+                     Style="{StaticResource HeaderCellLabelStyle}" />
+            </ContentView>
+          </ContentView>
+          <ContentView Style="{StaticResource HeaderCellBorderStyle}"
+                       Grid.Row="0"
+                       Grid.Column="6">
+            <ContentView Style="{StaticResource HeaderCellBackgroundStyle}">
+              <Label Text="Sa"
+                     Style="{StaticResource HeaderCellLabelStyle}" />
+            </ContentView>
+          </ContentView>
+        </Grid.Children>
+      </Grid>
+      <!-- Calendar Date Cells -->
+      <Grid x:Name="CalendarCellGrid"
+            AutomationId="CalendarContent"
+            IsVisible="True"
+            BackgroundColor="LightGray"
+            Padding="3,0,3,3"
+            VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowSpacing>
+          <x:Double>0</x:Double>
+        </Grid.RowSpacing>
+        <Grid.ColumnSpacing>
+          <x:Double>0</x:Double>
+        </Grid.ColumnSpacing>
+        <Grid.Children>
+          <!-- Row 1 Cells -->
+          <c1:CalendarCell Grid.Row="0"
+                           Grid.Column="0" />
+          <c1:CalendarCell Grid.Row="0"
+                           Grid.Column="1" />
+          <c1:CalendarCell Grid.Row="0"
+                           Grid.Column="2" />
+          <c1:CalendarCell Grid.Row="0"
+                           Grid.Column="3" />
+          <c1:CalendarCell Grid.Row="0"
+                           Grid.Column="4" />
+          <c1:CalendarCell Grid.Row="0"
+                           Grid.Column="5" />
+          <c1:CalendarCell Grid.Row="0"
+                           Grid.Column="6" />
+          <!-- Row 2 Cells -->
+          <c1:CalendarCell Grid.Row="1"
+                           Grid.Column="0" />
+          <c1:CalendarCell Grid.Row="1"
+                           Grid.Column="1" />
+          <c1:CalendarCell Grid.Row="1"
+                           Grid.Column="2" />
+          <c1:CalendarCell Grid.Row="1"
+                           Grid.Column="3" />
+          <c1:CalendarCell Grid.Row="1"
+                           Grid.Column="4" />
+          <c1:CalendarCell Grid.Row="1"
+                           Grid.Column="5" />
+          <c1:CalendarCell Grid.Row="1"
+                           Grid.Column="6" />
+          <!-- Row 3 Cells -->
+          <c1:CalendarCell Grid.Row="2"
+                           Grid.Column="0" />
+          <c1:CalendarCell Grid.Row="2"
+                           Grid.Column="1" />
+          <c1:CalendarCell Grid.Row="2"
+                           Grid.Column="2" />
+          <c1:CalendarCell Grid.Row="2"
+                           Grid.Column="3" />
+          <c1:CalendarCell Grid.Row="2"
+                           Grid.Column="4" />
+          <c1:CalendarCell Grid.Row="2"
+                           Grid.Column="5" />
+          <c1:CalendarCell Grid.Row="2"
+                           Grid.Column="6" />
+          <!-- Row 4 Cells -->
+          <c1:CalendarCell Grid.Row="3"
+                           Grid.Column="0" />
+          <c1:CalendarCell Grid.Row="3"
+                           Grid.Column="1" />
+          <c1:CalendarCell Grid.Row="3"
+                           Grid.Column="2" />
+          <c1:CalendarCell Grid.Row="3"
+                           Grid.Column="3" />
+          <c1:CalendarCell Grid.Row="3"
+                           Grid.Column="4" />
+          <c1:CalendarCell Grid.Row="3"
+                           Grid.Column="5" />
+          <c1:CalendarCell Grid.Row="3"
+                           Grid.Column="6" />
+          <!-- Row 5 Cells -->
+          <c1:CalendarCell Grid.Row="4"
+                           Grid.Column="0" />
+          <c1:CalendarCell Grid.Row="4"
+                           Grid.Column="1" />
+          <c1:CalendarCell Grid.Row="4"
+                           Grid.Column="2" />
+          <c1:CalendarCell Grid.Row="4"
+                           Grid.Column="3" />
+          <c1:CalendarCell Grid.Row="4"
+                           Grid.Column="4" />
+          <c1:CalendarCell Grid.Row="4"
+                           Grid.Column="5" />
+          <c1:CalendarCell Grid.Row="4"
+                           Grid.Column="6" />
+          <!-- Row 6 Cells -->
+          <c1:CalendarCell Grid.Row="5"
+                           Grid.Column="0" />
+          <c1:CalendarCell Grid.Row="5"
+                           Grid.Column="1" />
+          <c1:CalendarCell Grid.Row="5"
+                           Grid.Column="2" />
+          <c1:CalendarCell Grid.Row="5"
+                           Grid.Column="3" />
+          <c1:CalendarCell Grid.Row="5"
+                           Grid.Column="4" />
+          <c1:CalendarCell Grid.Row="5"
+                           Grid.Column="5" />
+          <c1:CalendarCell Grid.Row="5"
+                           Grid.Column="6" />
+        </Grid.Children>
+      </Grid>
+      <!-- Horse/Date Display -->
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="1" />
+          <RowDefinition Height="1" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.RowSpacing>
+          <x:Double>0</x:Double>
+        </Grid.RowSpacing>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="2" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.ColumnSpacing>
+          <x:Double>0</x:Double>
+        </Grid.ColumnSpacing>
+        <Grid.Children>
+          <BoxView BackgroundColor="SlateGray"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          <BoxView BackgroundColor="LightGray"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          <Label x:Name="SelectedDateLabel"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Grid.Row="2"
+                 Grid.Column="0" />
+          <BoxView BackgroundColor="LightGray"
+                   Grid.Row="2"
+                   Grid.Column="1" />
+          <Label x:Name="SelectedHorseLabel"
+                 TextColor="{StaticResource ApplicationGreen}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Grid.Row="2"
+                 Grid.Column="2" />
+        </Grid.Children>
+      </Grid>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

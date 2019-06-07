@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:c="clr-namespace:_4H_Application.Views.Pages.Records"
+            x:Class="_4H_Application.Views.Pages.Records.RecordBookTabbedPage"
+            Title="Record Book">
+  <TabbedPage.Children>
+    <!-- Calendar Page -->
+    <c:CalendarPage x:Name="CalendarPageReference"
+                    Title="Calendar">
+      <c:CalendarPage.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource">
+          <On Platform="iOS" Value="ic_calendar_black" />
+          <On Platform="Default" Value="" />
+        </OnPlatform>
+      </c:CalendarPage.Icon>
+    </c:CalendarPage>
+    <!-- Record Select Page -->
+    <c:RecordSelectPage x:Name="RecordPageReference"
+                        Title="Records">
+      <c:RecordSelectPage.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource">
+          <On Platform="iOS" Value="ic_list_black" />
+          <On Platform="Default" Value="" />
+        </OnPlatform>
+      </c:RecordSelectPage.Icon>
+    </c:RecordSelectPage>
+  </TabbedPage.Children>
+</TabbedPage>

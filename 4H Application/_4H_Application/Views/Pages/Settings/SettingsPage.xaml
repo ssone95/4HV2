@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:_4H_Application.Views.Pages.Settings"
+             xmlns:c="clr-namespace:_4H_Application.Views.Components"
+             x:Class="_4H_Application.Views.Pages.Settings.SettingsPage">
+  <ContentPage.Title>
+    <x:String>My Profile</x:String>
+  </ContentPage.Title>
+  <!-- Converters -->
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:HorseProgramLevelConverter x:Key="HorseProgramLevelConverter" />
+      <local:HorseProgramYearConverter x:Key="HorseProgramYearConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout>
+        <!-- Page Resources -->
+        <StackLayout.Resources>
+          <ResourceDictionary>
+            <Style x:Key="GridStyle"
+                   TargetType="Grid">
+              <Setter Property="Padding"
+                      Value="15,10,15,10" />
+              <Setter Property="RowSpacing"
+                      Value="0" />
+              <Setter Property="ColumnSpacing"
+                      Value="5" />
+            </Style>
+            <RowDefinitionCollection x:Key="GridRows">
+              <RowDefinition Height="Auto" />
+            </RowDefinitionCollection>
+            <ColumnDefinitionCollection x:Key="GridColumns">
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </ColumnDefinitionCollection>
+            <Style x:Key="Separator"
+                   TargetType="BoxView">
+              <Setter Property="Margin"
+                      Value="10,0,10,0" />
+              <Setter Property="HeightRequest"
+                      Value="1" />
+              <Setter Property="Color"
+                      Value="LightGray" />
+            </Style>
+          </ResourceDictionary>
+        </StackLayout.Resources>
+        <!-- Page Content Section -->
+        <!-- User Section -->
+        <StackLayout>
+          <!-- User Section Title -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="User Profile"
+                   TextColor="#202020"
+                   FontSize="Large"
+                   AutomationId="UserProfileLabel"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          </Grid>
+          <!-- User Name -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Name"
+                   AutomationId="UserNameLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <Entry x:Name="UserNameEntry"
+                   AutomationId="UserNameEntry"
+                   Text="{Binding UserName}"
+                   Placeholder="User Name"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- User Date of Birth -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Date of Birth"
+                  AutomationId="UserDateOfBirthLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <DatePicker x:Name="UserDateOfBirthDatePicker"
+                        AutomationId="UserDateOfBirthDatePicker"
+                        Date="{Binding UserDateOfBirth}"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- User Address --> 
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Address"
+                   AutomationId="UserAddressLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <c:ExpandableEditor x:Name="UserAddressEditor"
+                                AutomationId="UserAddressEditor"
+                                Text="{Binding UserAddress}"
+                                HorizontalOptions="FillAndExpand"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <BoxView Style="{StaticResource Separator}" />
+        </StackLayout>
+        <!-- Horse Club Section -->
+        <StackLayout>
+          <!-- Horse Club Section Title -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Horse Club Profile"
+                   TextColor="#202020"
+                   FontSize="Large"
+                   AutomationId="HorseClubProfileLabel"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          </Grid>
+          <!-- Horse Club Name -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Horse Club Name"
+                   AutomationId="HorseClubNameLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <Entry x:Name="HorseClubNameEntry"
+                   AutomationId="HorseClubNameEntry"
+                   Text="{Binding HorseClubName}"
+                   Placeholder="Horse Club Name"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- Horse Club County -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Horse Club County"
+                   AutomationId="HorseClubCountyLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <Entry x:Name="HorseClubCountyEntry"
+                   AutomationId="HorseClubCountyEntry"
+                   Text="{Binding HorseClubCounty}"
+                   Placeholder="Horse Club County"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- Horse Club Leader Name -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Horse Club Leader Name"
+                   AutomationId="HorseClubLeaderNameLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <Entry x:Name="HorseClubLeaderNameEntry"
+                   AutomationId="HorseClubLeaderNameEntry"
+                   Text="{Binding HorseClubLeaderName}"
+                   Placeholder="Leader Name"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <BoxView Style="{StaticResource Separator}" />
+        </StackLayout>
+        <!-- Project Section -->
+        <StackLayout>
+          <!-- Project Section Title -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Project Profile"
+                   TextColor="#202020"
+                   FontSize="Large"
+                   AutomationId="ProjectProfileLabel"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          </Grid>
+          <!-- Project Helper Name -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Project Helper Name"
+                   AutomationId="ProjectHelperNameLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <Entry x:Name="ProjectHelperNameEntry"
+                   AutomationId="ProjectHelperNameEntry"
+                   Text="{Binding HorseProgramHelperName}"
+                   Placeholder="Project Helper Name"
+                   HorizontalOptions="FillAndExpand"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- Project Achievement Program Level -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Achievement Program Level"
+                   AutomationId="AchievementProgramLevelLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <Picker x:Name="AchievementProgramLevelPicker"
+                    AutomationId="AchievementProgramLevelPicker"
+                    SelectedIndex="{Binding HorseProgramLevel,
+                                    Converter={StaticResource HorseProgramLevelConverter}}"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2">
+              <Picker.Items>
+                <x:String>1 - Giddy Up and Go</x:String>
+                <x:String>2 - Head, Heart, and Hooves</x:String>
+                <x:String>3 - Stable Relationships</x:String>
+                <x:String>4 - Riding the Range</x:String>
+                <x:String>5 - Jumping to New Heights</x:String>
+                <x:String>Other</x:String>
+              </Picker.Items>
+            </Picker>
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- Project Achievement Program Year -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Achievement Program Year"
+                   AutomationId="AchievementProgramYearLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <Picker x:Name="AchievementProgramYearPicker"
+                    AutomationId="AchievementProgramYearPicker"
+                    SelectedIndex="{Binding HorseProgramYear,
+                                    Converter={StaticResource HorseProgramYearConverter}}"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2">
+              <Picker.Items>
+                <x:String>First</x:String>
+                <x:String>Second</x:String>
+                <x:String>Third</x:String>
+              </Picker.Items>
+            </Picker>
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- Project Open Date -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Achievement Program Start Date"
+                   AutomationId="AchievementProgramStartDateLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <DatePicker x:Name="AchievementProgramStartDatePicker"
+                        AutomationId="AchievementProgramStartDatePicker"
+                        Date="{Binding HorseProgramStartDate}"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <!-- Project Close Date -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Achievement Program Close Date"
+                   AutomationId="AchievementProgramCloseDateLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <DatePicker x:Name="AchievementProgramCloseDatePicker"
+                        AutomationId="AchievementProgramCloseDatePicker"
+                        Date="{Binding HorseProgramCloseDate}"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2" />
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <BoxView Style="{StaticResource Separator}" />
+        </StackLayout>
+        <!-- Application Section -->
+        <StackLayout>
+          <!-- Application Section Title -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Application Settings"
+                   TextColor="#202020"
+                   FontSize="Large"
+                   AutomationId="ApplicationSettingsLabel"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3" />
+          </Grid>
+          <!-- Horse Club Name -->
+          <Grid Style="{StaticResource GridStyle}"
+                RowDefinitions="{StaticResource GridRows}"
+                ColumnDefinitions="{StaticResource GridColumns}">
+            <Label Text="Application Weight Units"
+                   AutomationId="ApplicationWeightUnitsLabel"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <Picker x:Name="ApplicationWeightUnitsPicker"
+                    AutomationId="ApplicationWeightUnitsPicker"
+                    HorizontalOptions="FillAndExpand"
+                    SelectedIndex="{Binding ApplicationWeightUnits}"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2">
+              <Picker.Items>
+                <x:String>Pounds</x:String>
+                <x:String>Kilograms</x:String>
+              </Picker.Items>
+            </Picker>
+          </Grid>
+          <BoxView Style="{StaticResource Separator}" />
+          <BoxView Style="{StaticResource Separator}" />
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

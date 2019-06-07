@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_4H_Application.Views.Pages.Pictures.PictureEditPage">
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+      <!-- Page Resources -->
+      <StackLayout.Resources>
+        <ResourceDictionary>
+          <Style x:Key="Separator"
+                 TargetType="BoxView">
+            <Setter Property="Margin"
+                    Value="10,0,10,0" />
+            <Setter Property="HeightRequest"
+                    Value="1" />
+            <Setter Property="Color"
+                    Value="LightGray" />
+          </Style>
+        </ResourceDictionary>
+      </StackLayout.Resources>
+      <!-- Page Content -->
+      <StackLayout.Children>
+        <!-- Navigation Buttons -->
+        <StackLayout Orientation="Horizontal">
+          <StackLayout.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+              <On Platform="iOS" Value="8,20,8,10" />
+              <On Platform="Default" Value="5,5,5,5" />
+            </OnPlatform>
+          </StackLayout.Margin>
+          <StackLayout.Children>
+            <Button x:Name="BackButton"
+                    AutomationId="BackButton"
+                    Text="Back"
+                    HorizontalOptions="StartAndExpand"
+                    BackgroundColor="Transparent"
+                    Clicked="BackButton_Clicked">
+              <Button.FontSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                  <On Platform="iOS" Value="18" />
+                  <On Platform="Default" Value="16" />
+                </OnPlatform>
+              </Button.FontSize>
+            </Button>
+            <Button x:Name="SaveButton"
+                    AutomationId="SaveButton"
+                    Text="Save"
+                    HorizontalOptions="EndAndExpand"
+                    BackgroundColor="Transparent"
+                    Clicked="SaveButton_Clicked">
+              <Button.FontSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                  <On Platform="iOS" Value="18" />
+                  <On Platform="Default" Value="16" />
+                </OnPlatform>
+              </Button.FontSize>
+            </Button>
+          </StackLayout.Children>
+        </StackLayout>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Page Image -->
+        <Image Source="{Binding FilePath}"
+               Margin="10,5,10,5"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand" />
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Page Caption -->
+        <StackLayout Orientation="Vertical"
+                     Margin="10,5,10,5">
+          <Label Text="Image Caption"
+                 FontSize="Small" />
+          <Entry x:Name="CaptionEntry"
+                 Text="{Binding Caption}"
+                 TextChanged="CaptionEntry_TextChanged"
+                 HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+        <BoxView Style="{StaticResource Separator}" />
+        <!-- Delete Button -->
+        <StackLayout Orientation="Vertical"
+                     Padding="15,10,15,10">
+          <Button x:Name="RemoveButton"
+                  AutomationId="RemoveButton"
+                  Text="Remove"
+                  TextColor="IndianRed"
+                  HorizontalOptions="FillAndExpand"
+                  Clicked="RemoveButton_Clicked" />
+        </StackLayout>
+      </StackLayout.Children>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

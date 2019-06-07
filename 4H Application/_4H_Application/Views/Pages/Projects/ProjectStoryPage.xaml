@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:_4H_Application.Views.Components"
+             x:Class="_4H_Application.Views.Pages.Projects.ProjectStoryPage">
+  <ContentPage.Title>
+    <x:String>Project Story</x:String>
+  </ContentPage.Title>
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout>
+        <!-- Navigation Buttons -->
+        <StackLayout Orientation="Horizontal">
+          <StackLayout.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+              <On Platform="iOS" Value="8,20,8,10" />
+              <On Platform="Default" Value="5,5,5,5" />
+            </OnPlatform>
+          </StackLayout.Margin>
+          <Button x:Name="CancelButton"
+                  AutomationId="CancelButton"
+                  Text="Cancel"
+                  HorizontalOptions="StartAndExpand"
+                  BackgroundColor="Transparent"
+                  Clicked="CancelButton_Clicked">
+            <Button.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Default" Value="16" />
+              </OnPlatform>
+            </Button.FontSize>
+          </Button>
+          <Button x:Name="SaveButton"
+                  AutomationId="SaveButton"
+                  Text="Save"
+                  HorizontalOptions="EndAndExpand"
+                  BackgroundColor="Transparent"
+                  Clicked="SaveButton_Clicked">
+            <Button.FontSize>
+              <OnPlatform x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="18" />
+                <On Platform="Default" Value="16" />
+              </OnPlatform>
+            </Button.FontSize>
+          </Button>
+        </StackLayout>
+        <!-- Project Story Section -->
+        <Grid HorizontalOptions="FillAndExpand">
+          <Grid.Margin>
+            <Thickness>
+              <Thickness.Top>5</Thickness.Top>
+              <Thickness.Bottom>5</Thickness.Bottom>
+              <Thickness.Left>10</Thickness.Left>
+              <Thickness.Right>10</Thickness.Right>
+            </Thickness>
+          </Grid.Margin>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.Children>
+            <Label Text="Write a story about your horse project experiences.  Include interesting or unusual things that happened.  Also tell what you learned and how you helped other people."
+                   Grid.Row="0"
+                   Grid.Column="0" />
+            <c:ExpandableEditor x:Name="ProjectStoryEditor"
+                                AutomationId="ProjectStoryEditor"
+                                TextChanged="FieldModified"
+                                MinimumHeightRequest="150"
+                                Grid.Row="1"
+                                Grid.Column="0" />
+          </Grid.Children>
+        </Grid>
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>
